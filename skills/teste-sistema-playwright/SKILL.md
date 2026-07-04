@@ -50,11 +50,23 @@ perspectiva do usuário.
 - Um cenário por teste; máximo ~1 fluxo de negócio por arquivo/classe.
 
 # CAMADA DE EXPLICABILIDADE
-Cada teste referencia o ID do cenário (SYS-1, SYS-2, ...) e o requisito/
-regra de negócio que valida.
+ANTES de escrever ou aplicar qualquer código, apresente o plano completo
+("mostre seu trabalho primeiro"):
+- A **lista COMPLETA de cenários** Given/When/Then com ID (SYS-1,
+  SYS-2, ...), indicando para cada um se é fluxo principal, alternativo
+  ou de erro.
+- **Mapeamento dos fluxos**: como os casos de uso/requisitos foram
+  particionados em cenários e por quê.
+- **Todas as suposições feitas** sobre comportamento, dados e ambiente.
+- **Decisões de projeto**: quais page/component objects serão criados,
+  estratégia de fixtures e de dados de teste (seed/factories), e o que
+  ficará de fora e por quê.
+Só depois dessa apresentação, gere o código. Cada teste referencia o ID do
+cenário e o requisito/regra de negócio que valida.
 
 # FORMATO DE SAÍDA
-1. **Lista de cenários** Arrange-Act-Assert com ID (SYS-1, SYS-2, ...).
+1. **Relatório de explicabilidade** (antes do código): lista completa de
+   cenários, mapeamento dos fluxos, suposições e decisões de projeto.
 2. **Código completo**: Page Object Model (+ component objects quando
    houver repetição), fixtures injetando os objects, factories de dados.
 3. **Notas de execução**: pré-requisitos (URL, seed, credenciais) e

@@ -44,14 +44,28 @@ sem "inflar" cobertura com testes sem valor.
 - Manter o estilo da suíte existente (nomenclatura, fixtures, builders).
 
 # CAMADA DE EXPLICABILIDADE
-No Javadoc/comentário de cada teste, cite a linha/branch do relatório JaCoCo
-que ele passa a cobrir (ex.: "linha 42, branch false — desconto nulo").
+ANTES de escrever ou aplicar qualquer código, apresente o plano completo
+("mostre seu trabalho primeiro"):
+- A **tabela de cobertura COMPLETA**: Classe | Método | Alvo estrutural
+  (condição/ramo não coberto) | Entrada/estado que o exercita | Teste
+  planejado — cobrindo todos os alvos identificados no relatório.
+- **Mapeamento das entradas**: para cada ramo, qual entrada/estado força
+  cada resultado da condição e por quê.
+- **Todas as suposições feitas** sobre o comportamento esperado dos
+  caminhos não cobertos.
+- **Decisões de projeto**: ordem de prioridade dos alvos, ramos marcados
+  como INFEASIBLE (com justificativa) e o que ficará de fora.
+Só depois dessa apresentação, gere o código. No Javadoc/comentário de cada
+teste, descreva o alvo pela CONDIÇÃO/comportamento, não por número de linha
+(ex.: "branch false do if de desconto nulo em calcularTotal"), pois linhas
+mudam com o código.
 
 # FORMATO DE SAÍDA
-1. **Tabela de cobertura**: Classe | Instruções % (antes→depois) |
-   Ramos % (antes→depois) | Alvos cobertos.
+1. **Relatório de explicabilidade** (antes do código): tabela de cobertura
+   completa, mapeamento das entradas, suposições e decisões de projeto.
 2. **Código completo** dos testes novos/alterados (JUnit 5), prontos para
    adicionar à suíte existente.
-3. **Resumo** do ganho de cobertura esperado (linhas e ramos).
+3. **Resumo** do ganho de cobertura esperado (instruções % e ramos %,
+   antes→depois, por classe).
 4. **Pendências**: ramos não cobertos restantes, infeasibles justificados
    e sugestões de refatoração para testabilidade.

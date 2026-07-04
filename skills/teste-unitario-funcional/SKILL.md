@@ -46,14 +46,25 @@ rastreabilidade explícita entre cada teste e o critério que o originou.
   a suposição em comentário `// SUPOSIÇÃO:` no teste.
 
 # CAMADA DE EXPLICABILIDADE
-- Monte uma tabela de derivação ANTES do código: ID | Variável |
-  Classe/Limite | Válida? | Valor de teste | Resultado esperado.
-- Cada @Test/@ParameterizedTest referencia o ID da tabela (CE-1, VL-2, ...)
-  no @DisplayName ou comentário.
+ANTES de escrever ou aplicar qualquer código, apresente o racional completo
+do que vai fazer e por quê ("mostre seu trabalho primeiro"):
+- A **tabela de derivação COMPLETA**: ID | Variável | Classe/Limite |
+  Válida? | Valor de teste | Resultado esperado — cobrindo todas as
+  variáveis analisadas, não apenas exemplos.
+- **Mapeamento das entradas**: como cada variável de entrada foi mapeada
+  para classes de equivalência e valores-limite, e por quê.
+- **Todas as suposições feitas** (as que virarão `// SUPOSIÇÃO:` e
+  quaisquer outras interpretações da especificação).
+- **Decisões de projeto dos testes**: quais casos serão agrupados em
+  @ParameterizedTest, escolha de valores concretos, o que ficará de fora
+  e por quê.
+Só depois dessa apresentação, gere o código. Cada @Test/@ParameterizedTest
+referencia o ID da tabela (CE-1, VL-2, ...) no @DisplayName ou comentário.
 
 # FORMATO DE SAÍDA
-1. **Tabela de derivação** (markdown).
+1. **Relatório de explicabilidade** (antes do código): tabela de derivação
+   completa, mapeamento das entradas, suposições e decisões de projeto.
 2. **Código completo** da classe de teste, compilável, com imports
    (pacote `org.junit.jupiter.api.*`).
 3. **Resumo final**: nº de classes de equivalência, nº de limites,
-   lacunas conhecidas e suposições feitas.
+   lacunas conhecidas.
