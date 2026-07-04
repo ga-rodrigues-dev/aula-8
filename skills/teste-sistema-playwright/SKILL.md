@@ -48,8 +48,7 @@ perspectiva do usuário.
 
 # Formato de saída (obrigatório)
 1. **Lista de cenários** Dado/Quando/Então com ID (SYS-1, SYS-2, ...).
-2. **Código completo**: classe base/fixtures, component/flow objects e
-   testes, com imports.
+2. **Código completo**: faça uso do page object model, fixtures
 3. **Explicabilidade**: cada teste referencia o ID do cenário e o requisito
    /regra de negócio que valida.
 4. **Notas de execução**: pré-requisitos (URL, seed, credenciais) e

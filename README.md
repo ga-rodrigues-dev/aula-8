@@ -5,11 +5,13 @@ Móveis — criação de Skills para orientar uma IA na geração de testes para
 aplicações Java + Spring Boot.
 
 ## Equipe
-- Gabriel Rodrigues da Silva
-- <membro 2>
-- <membro 3>
-- <membro 4>
-- <membro 5>
+- Gabriel Rodrigues da Silva — GitHub: `ga-rodrigues-dev`
+- João Ricardo de Souza Silva — GitHub: `joao-ricardo-souza` — e-mail: `joao.rick7@gmail.com`
+- Luan — GitHub: `LuanKuwabara`
+- Ana Caroline de Souza — GitHub: `anacsza` — e-mail: `ana.caroline.souza09@gmail.com`
+- Gabriel de Souza Alves — GitHub: `sp0oks` — e-mail: `g4briel.4lves@gmail.com`
+- Pedro Muniz Santos — GitHub: `pedro-fisica` — e-mail: `pedromuniz621@gmail.com`
+- Luciano Trevisan — GitHub: `luctrevisan` — e-mail: `luciano.trevisan@docente.senai.br`
 
 ## Skills
 | Skill | Técnica | Quando usar |
