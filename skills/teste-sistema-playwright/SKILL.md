@@ -26,18 +26,29 @@ perspectiva do usuário.
 2. Centralize o lifecycle e a configuração: Playwright → Browser →
    BrowserContext → Page; base URL, headless, slowMo e atributo de testId
    em um único ponto (fixture/classe base).
-3. Extraia component objects para UI repetida e flow/facade objects para
-   sequências multi-página; as ASSERTIONS ficam nos testes, não nos objects.
-4. Prepare dados de teste via API/seed (não pela UI) sempre que possível;
-   cada teste cria o que consome.
-5. Escreva os testes usando web-first assertions com retry
+3. Organize a suíte com Page Objects: locators e ações de cada página em
+   uma classe (um page object por tela significativa); extraia component
+   objects para UI repetida (header, navbar); as ASSERTIONS ficam nos
+   testes, não nos objects.
+4. Injete page objects via fixtures — `test.extend` em TypeScript,
+   classe base ou JUnit 5 extension em Java — eliminando instanciações
+   repetidas (`new X(page)`) em beforeEach/@BeforeEach.
+5. Prepare dados de teste via API/seed (não pela UI) sempre que possível;
+   centralize a criação em factories fora dos testes; cada teste cria o
+   que consome.
+6. Escreva os testes usando web-first assertions com retry
    (`assertThat(locator)...` / `await expect(locator)...`); nunca
    `assertEquals(locator.textContent(), ...)` nem sleeps fixos.
-6. Rode e verifique estabilidade (sem dependência de ordem; re-executável).
+7. Rode e verifique estabilidade (sem dependência de ordem; re-executável).
 
 # Regras
 - Localizadores na ordem: getByRole > getByLabel/getByPlaceholder >
   getByTestId; CSS/XPath frágeis são proibidos.
+- Locators só existem dentro de page/component objects: se um seletor
+  mudar, apenas um arquivo muda; testes descrevem intenção de negócio
+  (ex.: `loginPage.login(...)`), nunca estrutura da página.
+- Testes recebem page objects prontos via fixture; sem setup
+  repetido nos testes.
 - Testes independentes: sem estado compartilhado entre testes; limpeza
   ou isolamento por dados únicos (ex.: sufixo timestamp).
 - Sem `Thread.sleep`/`waitForTimeout`; esperar por condição via assertions.
@@ -48,7 +59,8 @@ perspectiva do usuário.
 
 # Formato de saída (obrigatório)
 1. **Lista de cenários** Dado/Quando/Então com ID (SYS-1, SYS-2, ...).
-2. **Código completo**: faça uso do page object model, fixtures
+2. **Código completo**: Page Object Model (+ component objects quando
+   houver repetição), fixtures injetando os objects, factories de dados.
 3. **Explicabilidade**: cada teste referencia o ID do cenário e o requisito
    /regra de negócio que valida.
 4. **Notas de execução**: pré-requisitos (URL, seed, credenciais) e
